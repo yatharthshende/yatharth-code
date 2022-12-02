@@ -1,0 +1,36 @@
+.buttonCSS{
+    font-size: 15px;
+}
+
+.slds-float_right{
+    font-size: 15px;
+    
+}
+.slds-float_left{
+    font-size: 15px;
+}
+
+.otpcss{
+    color: orange;
+    font: chivo;
+}
+
+
+/* selector related to whole div tag 
+BATCH 6 CSS
+
+*/
+.body{
+    
+    font-size: 12px;
+    font: Arial;
+    margin: 20px; 
+    padding: 20px;
+    border: 2px solid black;
+}
+
+/* selector related to h1 heading */
+.h1agg{
+    font-size: 25px;
+    font: Arial;
+}

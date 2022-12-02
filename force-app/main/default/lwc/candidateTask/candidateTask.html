@@ -1,0 +1,304 @@
+<template>
+    <lightning-card icon-name="custom:custom15" title="Candidate Information">
+
+        <div class="slds-p-around_medium">
+
+
+            <!-- First Name Field -->
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <lightning-input label="First Name" value={getCandidateRecord.FirstName}
+                        onchange={handleFirstNameChange} required>
+                    </lightning-input>
+                </div>
+
+                <!-- Phone Field -->
+                <div class="slds-col">
+                    <lightning-input label="Phone Number" pattern="[0-9]{10}"
+                        message-when-pattern-mismatch="Please Enter Valid Mobile Number"
+                        value={getCandidateRecord.Phone} onchange={handlePhoneChange}>
+                    </lightning-input>
+                </div>
+
+
+            </div>
+
+
+            <!-- Middle Name Field -->
+
+            <div class="slds-grid slds-gutters">
+
+                <div class="slds-col">
+                    <lightning-input label="Middle Name" value={getCandidateRecord.MiddleName}
+                        onchange={handleMiddleNameChange}>
+                    </lightning-input>
+                </div>
+
+                <!-- PAN Field -->
+
+                <div class="slds-col">
+                    <lightning-input label="PAN Number" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                        message-when-pattern-mismatch="Please Enter Valid PAN Number" value={getCandidateRecord.Pan}
+                        onchange={handlePanChange} required="PAN is a Required Field">
+                    </lightning-input>
+                </div>
+
+            </div>
+
+
+            <div class="slds-grid slds-gutters">
+
+                <!-- Last Name Field -->
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input label="Last Name" value={getCandidateRecord.LastName}
+                        onchange={handleLastNameChange}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    
+
+                </div>
+            </div>
+
+            <!-- Email Field -->
+
+            <div class="slds-grid slds-wrap slds-gutters">
+
+                <div class="slds-col slds-size_1-of-2">
+
+                    <lightning-input label="Email" pattern="[A-Za-z0-9._-]+@[A-Za-z.]+"
+                        message-when-pattern-mismatch="Please Enter Valid Email Address"
+                        value={getCandidateRecord.Email} onchange={handleEmailChange}>
+                    </lightning-input>
+
+                    <p if:true={SentOtp} class="otpcss">OTP send successfully. Please check your email</p>
+
+                </div>
+
+
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input label="Enter Your OTP" value={otpValue} onchange={handleOtpChange} required>
+                    </lightning-input>
+                    <p class="otpcss" if:true={VerfiedOtp}>Otp Verified</p>
+                    <p if:false={VerfiedOtp}><span class="otpcss" if:true={messageOtp}>{messageOtp}</span></p>
+
+                </div>
+            </div>
+
+
+            <!--BUTTONS FOR OTP -->
+            <div class="slds-grid slds-gutters slds-p-top_medium">
+
+                <div class="slds-col">
+                    <lightning-button label="Send OTP" variant="brand" value={VerifyEmail} onclick={handleEmailVerify}>
+                    </lightning-button>
+                </div>
+
+                <div class="slds-col">
+                    <lightning-button label="Verify OTP" variant="brand" value={otpValue} onclick={handleOtpVerify}>
+                    </lightning-button>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- Address Field -->
+
+            <div class="slds-grid slds-gutters">
+
+                <div class="slds-col slds-size_1-of-2">
+                    <p class="slds-p-top_small">
+                        <lightning-textarea label="Address" value={getCandidateRecord.Address}
+                            onchange={handleAddressChange}>
+                        </lightning-textarea>
+                    </p>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    
+
+                </div>
+            </div>
+
+        </div>
+
+    </lightning-card>
+
+    <lightning-card icon-name="custom:custom13" title="Qualification Details">
+        <div class="slds-p-around_medium">
+
+            <!-- Qualification 2 START -->
+
+            <div class="slds-m-around--xx-medium container-fluid">
+
+                <div class="container-fluid">
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                        <thead>
+                            <tr class="slds-text-title_caps">
+                                <!-- <th scope="col">
+                                    <div class="slds-truncate">#</div>
+                                </th> -->
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Qualification">Qualification</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Year Of Passing">Year Of Passing</div>
+                                </th>
+
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Percentage">Percentage</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Marksheet">Marksheet</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Action">Action</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+
+                            <template for:each={qualList} for:item="qual" for:index="indx">
+
+                                <tr key={qual.key} id={qual.key}>
+                                    <!-- <td>{indx}</td> -->
+                                    <td>
+                                        <template if:true={SelectqualPicklistValues.data}>
+
+                                            <lightning-combobox data-id={indx} name="progress"
+                                                label="Qualification" value={qual.SelectQualification}
+                                                placeholder="--Select--" options={SelectqualPicklistValues.data.values}
+                                                onchange={handleQualificationChange}>
+
+                                            </lightning-combobox>
+
+                                        </template>
+                                    </td>
+
+                                    <td>
+                                        <lightning-input message-when-range-overflow="Please enter valid year of passing" 
+                                            type="number" min="0" max="2022" data-id={indx}
+                                            label="Year Of Passing" value={qual.yearOfpassing}
+                                            onchange={handleYearOfPassingChange}>
+                                        </lightning-input>
+                                    </td>
+
+                                    <td>
+                                        <lightning-input type="number"  min="0" max="100" data-id={indx}
+                                            label="Percentage" value={qual.percentage}
+                                            onchange={handlePercentageChange} message-when-range-overflow="Please enter valid percentage ">
+                                        </lightning-input>
+                                    </td>
+
+                                    <td>
+
+
+                                        <lightning-input data-id={indx} type="file" value={qual.fileData.base64}
+                                            accept=".xlsx, .xls, .csv, .png, .doc, .docx, .pdf" label="Marksheet"
+                                            onchange={handleopenfileUpload}></lightning-input>
+
+                                        <template if:true={qual.fileData}>
+                                            <p>{qual.fileData.filename}</p>
+                                        </template>
+                                    </td>
+
+                                    <td>
+                                        <lightning-button-icon icon-name="utility:add" data-id={indx}
+                                            alternative-text="Add Row" class="slds-m-left_xx-small" onclick={addRow}
+                                            title="Add Row">
+                                        </lightning-button-icon>
+
+
+
+                                        <lightning-button-icon icon-name="utility:delete" data-id={indx}
+                                            alternative-text="Delete" class="slds-m-left_x-small" onclick={removeRow}
+                                            title="Delete"></lightning-button-icon>
+                                    </td>
+                                </tr>
+                            </template>
+
+                        </tbody>
+                    </table>
+                    <div class="slds-p-bottom_large"></div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+
+
+    <!-- Qualification 2 END -->
+
+
+
+
+
+    <!-- BATCH 4 START -->
+    <c-company_-exp_-form yathartdata={candidateId}></c-company_-exp_-form>
+
+    <!-- BATCH 4 END -->
+
+
+
+    <!-- BATCH 5 START -->
+
+    <c-file-upload-chunk fillcandidate={candidateId}></c-file-upload-chunk>
+
+    <!-- BATCH 5 END -->
+
+
+
+    <!-- BATCH 6 START -->
+
+    <lightning-card>
+
+        <div class="body">
+
+            <h1 class="h1agg">Agreement</h1> <br />
+
+            <div>
+                <lightning-input type="checkbox" label="Agree Terms and Conditions" checked={ischecked}
+                    onchange={handleChange}> </lightning-input>
+            </div> <br />
+
+            <a onclick={handleAnchor}>Read Terms and conditions</a>
+
+            <!-- using if condition to render div tag (to hide pdf initially) -->
+            <div if:true={pdfVisible} align="center" id="iframepdf">
+                <!-- used iframe tag to store the pdf which is imported from static resource -->
+                <iframe src={SamplePDFURL} height="100%" width="80%"> </iframe>
+            </div>
+        </div>
+
+        <!-- <lightning-button class="slds-align_absolute-center"  label="Submit" variant="brand"  disabled={disableBtn} onclick={handleSubmit}></lightning-button> -->
+
+
+        <!-- SUBMIT BUTTON -->
+
+
+        <div>
+            <p class="slds-p-top_medium">
+                <lightning-button class="slds-align_absolute-center" label="Submit" variant="brand" value={save}
+                    disabled={disableBtn} onclick={handleSaveShivang}>
+                </lightning-button>
+            </p>
+        </div>
+
+        <!-- SUBMIT BUTTON END-->
+
+
+
+
+    </lightning-card>
+
+    <!-- BATCH 6 END -->
+
+
+
+
+</template>
