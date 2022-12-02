@@ -1,0 +1,226 @@
+<template>
+    <lightning-card title="Candidate information">
+        <div class="slds-box slds-theme_default">
+        <lightning-input 
+        name="firstname" 
+        value={firstname} 
+        type="text" 
+        label="First Name" 
+        onchange={handelfirstname} 
+        required="">
+            </lightning-input>
+            <br/>
+            <lightning-input 
+        name="midelname" 
+        value={midelname}
+        type="text" 
+        label="Midel Name" 
+        onchange={handelmidelname} 
+        required="">
+            </lightning-input>
+            <br/>
+            <lightning-input 
+        name="lastname" 
+        value={lastname}
+        type="text" 
+        label="Last Name" 
+        onchange={handellastname} 
+        required="">
+            </lightning-input>
+            <br/>
+            <lightning-input 
+        name="phone" 
+        value={phone} 
+        type="tel" 
+        label="Phone" 
+        onchange={handelphone} >
+            </lightning-input>
+            <br/>
+            <lightning-input 
+        name="email" 
+        value={email} 
+        type="email" 
+        label="Email" 
+        onchange={handelemail}>
+            </lightning-input>
+            <br/>
+            <lightning-input 
+        name="pannumber" 
+        value={pannumber} 
+        type="text" 
+        label="Pan Number" 
+        onchange={handelpannumber} 
+        required="">
+            </lightning-input>
+            <br/>
+            <lightning-textarea  
+            name="address" 
+            value={address} 
+            label="Address" 
+            onchange={handeladdress} >
+                
+            </lightning-textarea>
+
+            <lightning-button 
+            variant="brand" 
+            label="Submit" 
+            title="Primary action" 
+            onclick={handleClick} 
+            class="slds-var-m-left_x-small"
+            
+        ></lightning-button>
+           
+                    </div>
+    </lightning-card>
+    <lightning-card title="Qulfication Details">
+        <div class="slds-box slds-theme_default">
+            <lightning-combobox
+            label="Qualifiacation"
+            value={qualifiacation} 
+            options={qualifiacationOptions}
+            onchange={handlequalifiacationChange}
+            
+    
+        ></lightning-combobox>
+        <br/>
+
+        <lightning-input 
+        name="yearofpassing" 
+        type="text" 
+        value={passingyear} 
+        label="Year Of Passing" 
+        onchange={handelyearofpassing} 
+        >
+            </lightning-input>
+            <br/>
+
+            <lightning-input 
+            name="percentage" 
+            type="text" 
+            value={percentage} 
+            label="Percentage" 
+            onchange={handelpercentage} 
+           >
+                </lightning-input>
+                <br/>
+                <lightning-input 
+                 type="file"
+                 onchange={onFileUpload} 
+                 name="uploadFile" 
+                 label="Marksheet">  
+                </lightning-input>
+            </div>
+            <div class="slds-box slds-theme_default">
+                <lightning-combobox
+                label="Qualifiacation"
+                options={qualifiacationOptions}
+                onchange={handlequalifiacationChange}
+                
+        
+            ></lightning-combobox>
+            <br/>
+    
+            <lightning-input 
+            name="yearofpassing" 
+            type="text" 
+            label="Year Of Passing" 
+            onchange={handelyearofpassing} 
+            >
+                </lightning-input>
+                <br/>
+    
+                <lightning-input 
+                name="percentage" 
+                type="text" 
+                label="Percentage" 
+                onchange={handelpercentage} 
+               >
+                    </lightning-input>
+                    <br/>
+                    <lightning-input 
+                    type="file"
+                    onchange={onFileUpload} 
+                    name="uploadFile" 
+                    label="Marksheet">  
+                   </lightning-input>
+                </div>
+                <div class="slds-box slds-theme_default">
+                    <lightning-combobox
+                    label="Qualifiacation"
+                    options={qualifiacationOptions}
+                    onchange={handlequalifiacationChange}
+                    
+            
+                ></lightning-combobox>
+                <br/>
+        
+                <lightning-input 
+                name="yearofpassing" 
+                type="text" 
+                label="Year Of Passing" 
+                onchange={handelyearofpassing} 
+                >
+                    </lightning-input>
+                    <br/>
+        
+                    <lightning-input 
+                    name="percentage" 
+                    type="text" 
+                    label="Percentage" 
+                    onchange={handelpercentage} 
+                   >
+                        </lightning-input>
+                        <br/>
+                        <lightning-input 
+                        type="file"
+                        onchange={onFileUpload} 
+                        name="uploadFile" 
+                        label="Marksheet">  
+                       </lightning-input>
+                    </div>
+                    <div class="slds-box slds-theme_default">
+                        <lightning-combobox
+                        label="Qualifiacation"
+                        options={qualifiacationOptions}
+                        onchange={handlequalifiacationChange}
+                        
+                
+                    ></lightning-combobox>
+                    <br/>
+            
+                    <lightning-input 
+                    name="yearofpassing" 
+                    type="text" 
+                    label="Year Of Passing" 
+                    onchange={handelyearofpassing} 
+                    >
+                        </lightning-input>
+                        <br/>
+            
+                        <lightning-input 
+                        name="percentage" 
+                        type="text" 
+                        label="Percentage" 
+                        onchange={handelpercentage} 
+                       >
+                            </lightning-input>
+                            <br/>
+                            <lightning-input 
+                            type="file"
+                            onchange={onFileUpload} 
+                            name="uploadFile" 
+                            label="Marksheet">  
+                           </lightning-input>
+                           <br/>
+                           <lightning-button 
+                           variant="brand" 
+                           label="Submit" 
+                           title="Primary action" 
+                           onclick={qualificationhandleClick} 
+                           class="slds-var-m-left_x-small"
+                           
+                       ></lightning-button>
+                        </div>
+            </lightning-card>
+</template>
+<!-- disabled={disableBtn} -->
