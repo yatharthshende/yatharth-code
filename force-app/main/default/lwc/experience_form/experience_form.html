@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="Yatharth" icon-name="custom:custom12">
+
+        <lightning-input
+            type="text"
+            value={comName}
+            label="Company Name"
+            onchange={handleCompanyName}>
+        </lightning-input>
+
+
+        <lightning-input
+            type="date"
+            value={fromDate}
+            label="From Date"
+            onchange={handleFromDate}>
+        </lightning-input>
+
+
+
+        <lightning-input
+            type="date"
+            value={toDate}
+            label="To Date"
+            onchange={handleToDate}>
+        </lightning-input>
+
+
+
+        <lightning-input  
+            type="checkbox"
+            value={currentlyWorking}
+            label="Currently Working Here ?"
+            onchange={handleCurrentlyworking}>
+        </lightning-input>
+
+
+
+        <lightning-button type="submit"
+                          variant="brand"
+                          label="Save Data"
+                           onclick={handleClick}>
+        </lightning-button>
+
+    </lightning-card>
+</template>
