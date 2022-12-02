@@ -1,0 +1,154 @@
+<template>
+    <lightning-card icon-name="standard:timesheet" title="Company Details">
+
+        <div class="slds-box slds-theme_default">
+
+            <h3 slot="title"> Add Your Current Experience </h3>
+
+            <lightning-record-edit-form object-api-name="Company_Details__c" onsuccess={handlesuccess}>
+
+                <lightning-layout>
+                    <lightning-layout-item style="display:none" size="12" small-device-size="6" medium-device-size="4"
+                        large-device-size="2" padding="around-small">
+
+                        <lightning-input-field style="display:none" field-name="Choose_Candidate__c"
+                            variant="label-stacked" disabled="true" name="candidate">
+                        </lightning-input-field>
+
+
+                    </lightning-layout-item>
+
+
+                    <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="2"
+                        padding="around-small">
+
+                        <lightning-input-field field-name="Company_Name__c" variant="label-stacked" required="">
+                        </lightning-input-field>
+
+                    </lightning-layout-item>
+
+
+                    <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="2"
+                        padding="around-small">
+                        <lightning-input-field field-name="From_Date__c" variant="label-stacked">
+                        </lightning-input-field>
+
+                    </lightning-layout-item>
+
+
+
+                    <template if:true={visible1}>
+                        <lightning-layout-item size="12" small-device-size="6" medium-device-size="4"
+                            large-device-size="2" padding="around-small">
+                            <lightning-input-field field-name="To_Date__c" value={value} variant="label-stacked"
+                                onchange={handeltodate}>
+                            </lightning-input-field>
+
+                        </lightning-layout-item>
+                    </template>
+
+
+                    <!-- <template if:true={visible2}> -->
+                        <lightning-layout-item size="12" small-device-size="6" medium-device-size="4"
+                            large-device-size="2" padding="around-small">
+                            <!-- <lightning-input-field type="checkbox" field-name="Currently_Working_Here__c"
+                                variant="label-stacked" onclick={handelcurrentlyworkinghere}>
+                            </lightning-input-field> -->
+                            <lightning-input type="checkbox" value={value} label="Currently working here" variant="label-stacked" onchange={handelcurrentlyworkinghere}></lightning-input>
+
+
+
+                        </lightning-layout-item>
+                   <!--  </template> -->
+
+
+
+                </lightning-layout>
+                <!-- <lightning-button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update">
+                </lightning-button> -->
+
+            </lightning-record-edit-form>
+
+            <h3 slot="title"> Add Your Previous Experience </h3>
+
+
+
+            <template for:each={itemList} for:item="item" for:index="index">
+                <lightning-record-edit-form key={item.id} object-api-name="Company_Details__c">
+
+
+
+                    <lightning-layout multiple-rows>
+
+                        <lightning-layout-item style="display:none" size="12" small-device-size="6"
+                            medium-device-size="4" large-device-size="2" padding="around-small">
+
+                            <lightning-input-field style="display:none" field-name="Choose_Candidate__c"
+                                variant="label-stacked" disabled="true" name="candidate">
+                            </lightning-input-field>
+
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" small-device-size="6" medium-device-size="4"
+                            large-device-size="2" padding="around-small">
+
+                            <lightning-input-field field-name="Company_Name__c" variant="label-stacked">
+                            </lightning-input-field>
+
+                        </lightning-layout-item>
+
+
+                        <lightning-layout-item size="12" small-device-size="6" medium-device-size="4"
+                            large-device-size="2" padding="around-small">
+                            <lightning-input-field field-name="From_Date__c" variant="label-stacked">
+                            </lightning-input-field>
+
+                        </lightning-layout-item>
+
+
+                        <lightning-layout-item size="12" small-device-size="6" medium-device-size="4"
+                            large-device-size="2" padding="around-small">
+                            <lightning-input-field field-name="To_Date__c" variant="label-stacked">
+                            </lightning-input-field>
+
+                        </lightning-layout-item>
+
+
+                        <lightning-layout-item size="12" small-device-size="6" medium-device-size="4"
+                            large-device-size="2" padding="around-small">
+                            <div class="slds-p-top_medium">
+                                <lightning-button-icon icon-name="utility:add" access-key={item.id} id={index}
+                                    alternative-text="Add Row" size="small" title="Add Row" onclick={addRow}
+                                    class="slds-m-left_xx-small">
+                                </lightning-button-icon>
+
+
+
+                                <lightning-button-icon icon-name="utility:delete" access-key={item.id} id={index}
+                                    alternative-text="Delete Row" size="small" title="Delete Row" onclick={removeRow}
+                                    class="slds-m-left_x-small">
+                                </lightning-button-icon>
+                            </div>
+
+
+                        </lightning-layout-item>
+
+
+                    </lightning-layout>
+
+
+                </lightning-record-edit-form>
+            </template>
+
+            <br />
+
+            <lightning-layout>
+
+
+
+
+            </lightning-layout>
+
+        </div>
+
+    </lightning-card>
+</template>
